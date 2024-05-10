@@ -1,0 +1,8 @@
+numpy>=1.13.3
+pymatgen>=2018.6.11
+ase>=3.19
+tqdm>=4.15
+pandas>=0.20.3
+scikit-learn>=0.19.1
+joblib>= 0.13.2
+torch
