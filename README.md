@@ -11,19 +11,18 @@ A **P**artial **A**tomic **C**harge Predicter for Porous **Ma**terials based on 
 
 
 [![Requires Python 3.9](https://img.shields.io/badge/Python-3.9-blue.svg?logo=python&logoColor=white)](https://python.org/downloads)[![PyPI version](https://badge.fury.io/py/pyEQL.svg)](https://pypi.org/project/PACMAN-charge/) [![Zenodo](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.10822403-blue)](https://doi.org/10.5281/zenodo.10822403)  [![MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/sxm13/PACMAN/LICENSE.txt) [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:sxmzhaogb@gmail.com) [![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)]() [![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)]()          
-                     
+
+**Developed by:** Guobin Zhao
 
 # Installation                             
                                  
-:star: **by [pip](https://pypi.org/project/PACMAN-charge/)**                                                              
+**[pip](https://pypi.org/project/PACMAN-charge/)**                                                              
 
 ```sh
 pip install PACMAN-charge
 ```
 
-## by source                                                                  
-
-**Download**                          
+**Git clone**                          
 
 ```sh
 git clone https://github.com/sxm13/PACMAN.git
@@ -31,20 +30,17 @@ cd PACMAN
 pip install -r requirements.txt
 ```                            
          
-# Charge Assignment               
+# Example Usage               
            
-:star: **notebook(from pip)**                      
+**Jupyter notebook (using pip)**                      
                 
 ```sh      
 from PACMANCharge import pmcharge
 pmcharge.predict(cif_file="./test/Cu-BTC.cif",charge_type="DDEC6",digits=10,atom_type=True,neutral=True)
 
-```
-
-cif_file: relative path to a **CIF** file with cif files without partial atomic charges    
-                                                                              
+```                                                               
                                   
-**bash**
+**Terminal**
 ```sh
 python pmcharge.py folder-name[path] --charge_type[DDEC6/Bader/CM5] --digits[int] [--atom_type] [--neutral]
 ```
@@ -75,20 +71,20 @@ If you use PACMAN charge, please consider citing [this paper]():
 }
 ```
 
-# Bugs
-
- If you encounter any problem during using **PACMAN**, please email ```sxmzhaogb@gmail.com``` or create "issues".
-
- 
-# Development
-
-                  
 | Database with DDEC Charges                                                                                                                                      | url                                                                                                                                        | size                                                                                                                                                                                                                                                                                                                                                                                              |
 | ---------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | QMOF | [link](https://github.com/Andrew-S-Rosen/QMOF) | 16,779 |
 | CoRE MOF 2014 DDEC | [link](https://zenodo.org/records/3986573#.XzfKiJMzY8N) | 2,932 |
 | CoRE MOF 2014 DFT-optimized | [link](https://zenodo.org/records/3986569#.XzfKcpMzY8N) | 502 | 
 | CURATED-COFs | [link](https://github.com/danieleongari/CURATED-COFs) | 612 |
+
+
+# Bugs and Issues
+
+ If you encounter any problem during using **PACMAN**, please email ```sxmzhaogb@gmail.com``` or create "issues".
+
+ 
+# Repository Structures
 
 #### Workflow            
 <img src="./figs/workflow.png" alt="workflow" width="500">             
