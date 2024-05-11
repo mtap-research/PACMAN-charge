@@ -153,4 +153,16 @@ If you use PACMAN charge, please consider citing [this paper]():
 └── train_charge.py                                     # main python file for atomic charge training
 
 ```
+
+## AUTHORS
+
+### Maintainers of the repository
+* Guobin Zhao (sxmzhaogb@gmail.com)
+
+### Project contributors
+* Guobin Zhao (sxmzhaogb@gmail.com)
+* Yongchul G. Chung (drygchung@gmail.com)
+
+
+
  
