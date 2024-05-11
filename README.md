@@ -30,7 +30,7 @@ cd PACMAN
 pip install -r requirements.txt
 ```                            
          
-# Example Usage               
+# How to Use PACMAN charge               
            
 **Jupyter notebook (using pip)**                      
                 
@@ -44,8 +44,9 @@ pmcharge.predict(cif_file="./test/Cu-BTC.cif",charge_type="DDEC6",digits=10,atom
 ```sh
 python pmcharge.py folder-name[path] --charge_type[DDEC6/Bader/CM5] --digits[int] [--atom_type] [--neutral]
 ```
-example: ```python pmcharge.py test_file/test-1/ --charge_type DDEC6 --digits 10 --atom_type --neutral```                                                    
-usage:  ```python pmcharge.py -h```                                     
+**Example command:** ```python pmcharge.py test_file/test-1/ --charge_type DDEC6 --digits 10 --atom_type --neutral```                                                    
+
+**Help usage information:** ```python pmcharge.py -h```                                     
 
 * folder-name: relative path to a folder with cif files without partial atomic charges                            
 * charge-type (default: DDE6): DDEC6, Bader or CM5
