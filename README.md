@@ -87,10 +87,10 @@ If you use PACMAN charge, please consider citing [this paper]():
  
 # Repository Structures
 
-#### Workflow            
+#### Model Architecture            
 <img src="./figs/workflow.png" alt="workflow" width="500">             
                     
-### Folder contents
+### Directory Organization
 ```
 .
 ├── ..
@@ -153,12 +153,12 @@ If you use PACMAN charge, please consider citing [this paper]():
 
 ## AUTHORS
 
-### Maintainers of the repository
+### Maintainer
 * Guobin Zhao (sxmzhaogb@gmail.com)
 
-### Project contributors
-* Guobin Zhao (sxmzhaogb@gmail.com)
-* Yongchul G. Chung (drygchung@gmail.com)
+### Project Contributors
+* Guobin Zhao (sxmzhaogb@gmail.com): models, training, data preparation
+* Yongchul G. Chung (drygchung@gmail.com): supervising
 
 
 
