@@ -136,7 +136,7 @@ def CIF2json(root_cif_dir,data_csv,save_path):
                 json.dump(data, file)
 
 # main paart, get cell and position of each atom data and save
-def pre4opt(csv, root_cif_dir, save_cell_dir, save_pos_dir):
+def pre4opt(csv, root_cif_dir, save_pos_dir):
     mofs = pd.read_csv(csv)["name"]
     print("Processing the following MOFs:")
     print(mofs)
@@ -151,9 +151,9 @@ def pre4opt(csv, root_cif_dir, save_cell_dir, save_pos_dir):
             elements = [str(site.specie) for site in structure.sites]
             pos = []
             #atom = []
-            lattice = structure.lattice.matrix
+            # lattice = structure.lattice.matrix
             #lattice = structure.lattice
-            np.save(save_cell_dir + mof + '.npy', lattice)
+            # np.save(save_cell_dir + mof + '.npy', lattice)
             # np.save(save_cell_dir + mof + '.npy', [lattice.abc,lattice.angles])
             for i in range(len(elements)):
                 #ele = elements[i]
