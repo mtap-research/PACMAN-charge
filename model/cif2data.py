@@ -262,3 +262,23 @@ def get_cm5_data(root_cif_dir,dataset_csv,save_cm5_dir):
             f.close()
         except:
             pass
+
+def get_repeat_data(root_cif_dir,save_repeat_dir):
+    mofs = glob.glob(os.path.join(root_cif_dir, '*.cif'))
+    for mof in tqdm(mofs[:]):
+        mof = mof.replace(".cif","").split("/")[-1]
+        try:
+            repeat_data = []
+            with open(root_cif_dir + mof + ".cif", 'r') as f:
+                lines = f.readlines()
+                
+                for line in lines:
+                    if len(re.split(r"[ ]+", line))==7:
+                    
+                        repeat=re.split(r"[ ]+", line)[-1]
+                        repeat_data.append(repeat.replace("\n",""))
+                np.save(save_repeat_dir + mof + '.npy', repeat_data)          
+            f.close()
+			
+        except:
+           pass
