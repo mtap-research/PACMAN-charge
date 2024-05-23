@@ -132,7 +132,7 @@ def CIF2json(root_cif_dir,data_csv,save_path):
                     "index2":index2.tolist(),
                     "dij": dij.tolist(),
                     "nn_num": nn_num}
-            with open(save_path + mof + "_" + ".json", 'w') as file:
+            with open(save_path + mof + ".json", 'w') as file:
                 json.dump(data, file)
 
 # main paart, get cell and position of each atom data and save
