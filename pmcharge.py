@@ -13,10 +13,10 @@ from model4pre.cif2data import ase_format, CIF2json, pre4pre, write4cif   #,n_at
 def main():
     parser = argparse.ArgumentParser(description="Run PACMaN with the specified configurations")
     parser.add_argument('folder_name', type=str, help='Relative path to a folder with cif files without partial atomic charges')
-    parser.add_argument('--charge_type', type=str, default='DDEC6', choices=['DDEC6', 'Bader', 'CM5'], help='Type of charges to use')
+    parser.add_argument('--charge_type', type=str, default='DDEC6', choices=['DDEC6', 'Bader', 'CM5', 'REPEAT'], help='Type of charges to use')
     parser.add_argument('--digits', type=int, default=6, help='Number of decimal places to print for partial atomic charges')
-    parser.add_argument('--atom_type', action='store_true', default=False, help='Keep the same partial atomic charge for the same atom types')
-    parser.add_argument('--neutral', action='store_true', default=False, help='Keep the net charge is zero')
+    parser.add_argument('--atom_type', type=bool, default=True, help='Keep the same partial atomic charge for the same atom types')
+    parser.add_argument('--neutral', type=bool, default=True, help='Keep the net charge is zero')
     args = parser.parse_args()
 
     path = args.folder_name
@@ -46,6 +46,9 @@ def main():
     elif charge_type=="CM5":
         model_charge_name = "./pth/best_cm5/cm5.pth"
         charge_nor_name = "./pth/best_cm5/normalizer-cm5.pkl"
+    elif charge_type=="REPEAT":
+        model_charge_name = "./pth/best_repeat/repeat.pth"
+        charge_nor_name = "./pth/best_repeat/normalizer-repeat.pkl"
     # with open(pbe_nor_name, 'rb') as f:
     #     pbe_nor = pickle.load(f)
     # f.close()

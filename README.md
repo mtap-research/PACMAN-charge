@@ -6,7 +6,7 @@
 
 A **P**artial **A**tomic **C**harge Predicter for Porous **Ma**terials based on Graph Convolutional Neural **N**etwork (**PACMAN**)
 
-- DDEC6 ([1](https://doi.org/10.1039/C6RA04656H), [2](https://doi.org/10.1039/C6RA05507A), [3](https://doi.org/10.1039/C7RA07400J), [4](https://doi.org/10.1039/C7RA11829E)), [Bader](https://doi.org/10.1021/jp0482666), [Charge Model 5 (CM5)](https://doi.org/10.1021/ct200866d) for metal-organic frameworks (MOFs)
+- DDEC6 ([1](https://doi.org/10.1039/C6RA04656H), [2](https://doi.org/10.1039/C6RA05507A), [3](https://doi.org/10.1039/C7RA07400J), [4](https://doi.org/10.1039/C7RA11829E)), [Bader](https://doi.org/10.1021/jp0482666), [Charge Model 5 (CM5)](https://doi.org/10.1021/ct200866d), [REPEAT](https://doi.org/10.1021/ct9003405) for metal-organic frameworks (MOFs)
 - DDEC6 for covalent-organic frameworks (COFs)
 
 
@@ -42,17 +42,17 @@ pmcharge.predict(cif_file="./test/Cu-BTC.cif",charge_type="DDEC6",digits=10,atom
                                   
 **Terminal**
 ```sh
-python pmcharge.py folder-name[path] --charge_type[DDEC6/Bader/CM5] --digits[int] [--atom_type] [--neutral]
+python pmcharge.py folder-name[path] --charge_type[DDEC6/Bader/CM5/REPEAT] --digits[int] --atom_type[bool] --neutral[bool]
 ```
-**Example command:** ```python pmcharge.py test_file/test-1/ --charge_type DDEC6 --digits 10 --atom_type --neutral```                                                    
+**Example command:** ```python pmcharge.py test_file/test-1/ --charge_type DDEC6 --digits 10```                                                    
 
 **Help usage information:** ```python pmcharge.py -h```                                     
 
 * folder-name: relative path to a folder with cif files without partial atomic charges                            
-* charge-type (default: DDE6): DDEC6, Bader or CM5
+* charge-type (default: DDE6): DDEC6, Bader, CM5 or REPEAT
 * digits (default: 6): number of decimal places to print for partial atomic charges. ML models were trained on a 6-digit dataset.                                                     
-* atom-type (default: False): keep the same partial atomic charge for the same atom types (based on the similarity of partial atomic charges up to 3 & 2 decimal places).                                     
-* neutral (default: False): keep the net charge is zero. We use "mean" method to neuralize the system where the excess charges are equally distributed across all atoms.                   
+* atom-type (default: True): keep the same partial atomic charge for the same atom types (based on the similarity of partial atomic charges up to 3 & 2 decimal places).                                     
+* neutral (default: True): keep the net charge is zero. We use "mean" method to neuralize the system where the excess charges are equally distributed across all atoms.                   
 
 # Website & Zenodo
 * Predict partial atomic charges using an online APP :point_right: [link](https://pacman-charge-mtap.streamlit.app/).       
@@ -78,6 +78,7 @@ If you use PACMAN charge, please consider citing [this paper]():
 | CoRE MOF 2014 DDEC | [link](https://zenodo.org/records/3986573#.XzfKiJMzY8N) | 2,932 |
 | CoRE MOF 2014 DFT-optimized | [link](https://zenodo.org/records/3986569#.XzfKcpMzY8N) | 502 | 
 | CURATED-COFs | [link](https://github.com/danieleongari/CURATED-COFs) | 612 |
+| ARC-MOF | [link](https://zenodo.org/records/10818822) | 279,118 |                                         
 
 
 # Bugs and Issues
