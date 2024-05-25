@@ -49,10 +49,10 @@ python pmcharge.py folder-name[path] --charge_type[DDEC6/Bader/CM5/REPEAT] --dig
 **Help usage information:** ```python pmcharge.py -h```                                     
 
 * folder-name: relative path to a folder with cif files without partial atomic charges                            
-* charge-type (default: DDE6): DDEC6, Bader, CM5 or REPEAT
+* charge-type (default: DDEC6): DDEC6, Bader, CM5 or REPEAT
 * digits (default: 6): number of decimal places to print for partial atomic charges. ML models were trained on a 6-digit dataset.                                                     
-* atom-type (default: True): keep the same partial atomic charge for the same atom types (based on the similarity of partial atomic charges up to 3 & 2 decimal places).                                     
-* neutral (default: True): keep the net charge is zero. We use "mean" method to neuralize the system where the excess charges are equally distributed across all atoms.                   
+* atom-type (default: True): Default is to keep the same partial atomic charge for the same atom types (based on the similarity of partial atomic charges up to 3 & 2 decimal places).                                     
+* neutral (default: True): Default is to keep the net charge is zero. We use "mean" method to neuralize the system where the excess charges are equally distributed across all atoms.                   
 
 # Website & Zenodo
 * Predict partial atomic charges using an online APP :point_right: [link](https://pacman-charge-mtap.streamlit.app/).       
@@ -63,9 +63,9 @@ python pmcharge.py folder-name[path] --charge_type[DDEC6/Bader/CM5/REPEAT] --dig
 If you use PACMAN charge, please consider citing [this paper]():
 ```bib
 @article{,
-    title={PACMAN: A Robust Partial Atomic Charge Predicter for Nanoporous Materials using Crystal Graph Convolution Network},
+    title={PACMAN: A Robust Partial Atomic Charge Predicter for Nanoporous Materials based on Crystal Graph Convolution Network},
     DOI={},
-    journal={},
+    journal={Journal of Chemical Theory and Computation},
     author={Zhao, Guobin and Chung, Yongchul},
     year={2024},
     pages={}
