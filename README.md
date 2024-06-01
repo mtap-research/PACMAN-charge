@@ -163,7 +163,7 @@ Parity plot of partial atomic charges from DDEC6 and PACMAN on the test set (QMO
 <img src="./figs/DDEC6.png" alt="workflow" width="500">                                       
 
 *  CM5 Charges                       
-Parity plot of partial atomic charges CM5 DDEC6 and PACMAN on the test set (QMOF).                             
+Parity plot of partial atomic charges CM5 and PACMAN on the test set (QMOF).                             
 <img src="./figs/CM5.png" alt="workflow" width="500">                                       
 
 *  Bader Charges                            
