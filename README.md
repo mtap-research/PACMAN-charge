@@ -64,7 +64,7 @@ If you use PACMAN charge, please consider citing [this paper]():
 ```bib
 @article{,
     title={PACMAN: A Robust Partial Atomic Charge Predicter for Nanoporous Materials based on Crystal Graph Convolution Network},
-    DOI={},
+    DOI={10.1021/acs.jctc.4c00434},
     journal={Journal of Chemical Theory and Computation},
     author={Zhao, Guobin and Chung, Yongchul},
     year={2024},
@@ -90,6 +90,24 @@ If you use PACMAN charge, please consider citing [this paper]():
 
 #### Model Architecture            
 <img src="./figs/workflow.png" alt="workflow" width="500">             
+
+### Models Performance                     
+*  DDEC6 Charges                                            
+Parity plot of partial atomic charges from DDEC6 and PACMAN on the test set (QMOF).                         
+<img src="./figs/DDEC6.png" alt="workflow" width="500">                                       
+
+*  CM5 Charges                       
+Parity plot of partial atomic charges CM5 DDEC6 and PACMAN on the test set (QMOF).                             
+<img src="./figs/CM5.png" alt="workflow" width="500">                                       
+
+*  Bader Charges                            
+Parity plot of partial atomic charges from Bader and PACMAN on the test set (QMOF).                           
+<img src="./figs/Bader.png" alt="workflow" width="500">                                       
+
+*  REPEAT Charges                              
+Parity plot of partial atomic charges from REPEAT and PACMAN on the test set (ARC-MOF). 
+<img src="./figs/REPEAT.png" alt="workflow" width="500">                                       
+
                     
 ### Directory Organization
 ```
