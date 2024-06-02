@@ -60,7 +60,7 @@ python pmcharge.py folder-name[path] --charge_type[DDEC6/Bader/CM5/REPEAT] --dig
 * Note: All future releases will be uploaded on Github and pip only
 
 # Reference
-If you use PACMAN charge, please consider citing [this paper]():
+If you use PACMAN charge, please consider citing [this paper](https://pubs.acs.org/doi/10.1021/acs.jctc.4c00434):
 ```bib
 @article{,
     title={PACMAN: A Robust Partial Atomic Charge Predicter for Nanoporous Materials based on Crystal Graph Convolution Network},
