@@ -119,7 +119,7 @@ If you use PACMAN charge, please consider citing [this paper](https://pubs.acs.o
 │
 ├── pth                                                 # Models of this project
 │   ├── best_bader                                      # Bader
-│   │   ├── bader  .pth                                 # Bader charge model
+│   │   ├── bader.pth                                   # Bader charge model
 │   │   └── normalizer-bader.pkl                        # Normalizer of bandgap
 │   ├── best_bandgap                                    # Bandgap
 │   │   ├── bandgap.pth                                 # Bandgap model
