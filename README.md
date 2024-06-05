@@ -157,22 +157,33 @@ If you use PACMAN charge, please consider citing [this paper](https://pubs.acs.o
 └── train_charge.py                                     # main python file for atomic charge training
 
 ```
+
+# Supported elements                                                                  
+(Elements that have been used by the model training process, not all the elements contained in the database)
+
+*  DDEC6/CM5/Bader Charges                                                              
+<img src="./figs/Element_QMOF.png" alt="QMOF-Element" width="500">                                       
+
+*  REPEAT Charges                                                                                                
+<img src="./figs/Element_ARC-MOF.png" alt="ARC-MOF-Element" width="500">                        
+
+                                                           
 # Models Performance                                    
 *  DDEC6 Charges                                            
 Parity plot of partial atomic charges from DDEC6 and PACMAN on the test set (QMOF).                         
-<img src="./figs/DDEC6.png" alt="workflow" width="500">                                       
+<img src="./figs/DDEC6.png" alt="DDEC6" width="500">                                       
 
 *  CM5 Charges                       
 Parity plot of partial atomic charges CM5 and PACMAN on the test set (QMOF).                             
-<img src="./figs/CM5.png" alt="workflow" width="500">                                       
+<img src="./figs/CM5.png" alt="CM5" width="500">                                       
 
 *  Bader Charges                            
 Parity plot of partial atomic charges from Bader and PACMAN on the test set (QMOF).                           
-<img src="./figs/Bader.png" alt="workflow" width="500">                                       
+<img src="./figs/Bader.png" alt="Bader" width="500">                                       
 
 *  REPEAT Charges                              
 Parity plot of partial atomic charges from REPEAT and PACMAN on the test set (ARC-MOF). 
-<img src="./figs/REPEAT.png" alt="workflow" width="500">                                       
+<img src="./figs/REPEAT.png" alt="REPEAT" width="500">                                       
 
 
                     
