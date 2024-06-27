@@ -68,7 +68,9 @@ If you use PACMAN charge, please consider citing [this paper](https://pubs.acs.o
     journal={Journal of Chemical Theory and Computation},
     author={Zhao, Guobin and Chung, Yongchul},
     year={2024},
-    pages={}
+    volume = {20},
+    number = {12},
+    pages={5368-5380}
 }
 ```
 
