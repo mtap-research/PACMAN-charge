@@ -25,8 +25,8 @@ pip install PACMAN-charge
 **Git clone**                          
 
 ```sh
-git clone https://github.com/sxm13/PACMAN.git
-cd PACMAN
+git clone https://github.com/mtap-research/PACMAN-charge.git
+cd PACMAN-charge
 pip install -r requirements.txt
 ```                            
          
