@@ -45,7 +45,7 @@ def main():
 								'n_conv':n_conv,'n_h':n_h,'lr':lr,'lr_decay_rate':lr_decay_rate,'weight_decay':weight_decay}
     best_mae_error = 1e10
     epochs = 500
-    dataset = CIFData(root_dir,radius,dmin,step,is_unrelaxed=False,random_seed=random_seed)
+    dataset = CIFData(root_dir,radius,dmin,step,random_seed=random_seed)
     collate_fn = collate_pool
     train_loader, val_loader, test_loader = get_train_val_test_loader(dataset,collate_fn,batch_size,
                                                           train_idx,val_idx,test_idx,num_workers,pin_memory)

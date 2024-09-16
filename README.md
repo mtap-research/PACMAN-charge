@@ -25,8 +25,8 @@ pip install PACMAN-charge
 **Git clone**                          
 
 ```sh
-git clone https://github.com/sxm13/PACMAN.git
-cd PACMAN
+git clone https://github.com/mtap-research/PACMAN-charge.git
+cd PACMAN-charge
 pip install -r requirements.txt
 ```                            
          
@@ -60,19 +60,21 @@ python pmcharge.py folder-name[path] --charge_type[DDEC6/Bader/CM5/REPEAT] --dig
 * Note: All future releases will be uploaded on Github and pip only
 
 # Reference
-If you use PACMAN charge, please consider citing [this paper]():
+If you use PACMAN charge, please consider citing [this paper](https://pubs.acs.org/doi/10.1021/acs.jctc.4c00434):
 ```bib
 @article{,
     title={PACMAN: A Robust Partial Atomic Charge Predicter for Nanoporous Materials based on Crystal Graph Convolution Network},
-    DOI={},
+    DOI={10.1021/acs.jctc.4c00434},
     journal={Journal of Chemical Theory and Computation},
     author={Zhao, Guobin and Chung, Yongchul},
     year={2024},
-    pages={}
+    volume = {20},
+    number = {12},
+    pages={5368-5380}
 }
 ```
 
-| Database with DDEC Charges                                                                                                                                      | url                                                                                                                                        | size                                                                                                                                                                                                                                                                                                                                                                                              |
+| Databases with partial atomic charges                                                                                                                                      | url                                                                                                                                        | size                                                                                                                                                                                                                                                                                                                                                                                              |
 | ---------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | QMOF | [link](https://github.com/Andrew-S-Rosen/QMOF) | 16,779 |
 | CoRE MOF 2014 DDEC | [link](https://zenodo.org/records/3986573#.XzfKiJMzY8N) | 2,932 |
@@ -90,7 +92,8 @@ If you use PACMAN charge, please consider citing [this paper]():
 
 #### Model Architecture            
 <img src="./figs/workflow.png" alt="workflow" width="500">             
-                    
+
+
 ### Directory Organization
 ```
 .
@@ -118,7 +121,7 @@ If you use PACMAN charge, please consider citing [this paper]():
 │
 ├── pth                                                 # Models of this project
 │   ├── best_bader                                      # Bader
-│   │   ├── bader  .pth                                 # Bader charge model
+│   │   ├── bader.pth                                   # Bader charge model
 │   │   └── normalizer-bader.pkl                        # Normalizer of bandgap
 │   ├── best_bandgap                                    # Bandgap
 │   │   ├── bandgap.pth                                 # Bandgap model
@@ -157,6 +160,35 @@ If you use PACMAN charge, please consider citing [this paper]():
 
 ```
 
+# Supported elements                                                                  
+(Elements that have been used by the model training process, not all the elements contained in the database)
+
+*  DDEC6/CM5/Bader Charges                                                              
+<img src="./figs/Element_QMOF.png" alt="QMOF-Element" width="500">                                       
+
+*  REPEAT Charges                                                                                                
+<img src="./figs/Element_ARC-MOF.png" alt="ARC-MOF-Element" width="500">                        
+
+                                                           
+# Models Performance                                    
+*  DDEC6 Charges                                            
+Parity plot of partial atomic charges from DDEC6 and PACMAN on the test set (QMOF).                         
+<img src="./figs/DDEC6.png" alt="DDEC6" width="500">                                       
+
+*  CM5 Charges                       
+Parity plot of partial atomic charges CM5 and PACMAN on the test set (QMOF).                             
+<img src="./figs/CM5.png" alt="CM5" width="500">                                       
+
+*  Bader Charges                            
+Parity plot of partial atomic charges from Bader and PACMAN on the test set (QMOF).                           
+<img src="./figs/Bader.png" alt="Bader" width="500">                                       
+
+*  REPEAT Charges                              
+Parity plot of partial atomic charges from REPEAT and PACMAN on the test set (ARC-MOF). 
+<img src="./figs/REPEAT.png" alt="REPEAT" width="500">                                       
+
+
+                    
 ## AUTHORS
 
 ### Maintainer
