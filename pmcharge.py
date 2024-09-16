@@ -32,23 +32,23 @@ def main():
         print("Can not find your file, please check is it exit or correct?")
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
-    # model_pbe_name = "./pth/best_pbe/pbe-atom.pth"
+    # model_pbe_name = "./pth/best_pbe/pbe.pth"
     # model_bandgap_name = "./pth/best_bandgap/bandgap.pth"
     
     if charge_type=="DDEC6":
         model_charge_name = "./pth/best_ddec/ddec.pth"
-        # pbe_nor_name = "./pth/best_pbe/normalizer-pbe.pkl"
-        # bandgap_nor_name = "./pth/best_bandgap/normalizer-bandgap.pkl"
-        charge_nor_name = "./pth/best_ddec/normalizer-ddec.pkl"
+        # pbe_nor_name = "./pth/best_pbe/pbe.pkl"
+        # bandgap_nor_name = "./pth/best_bandgap/bandgap.pkl"
+        charge_nor_name = "./pth/best_ddec/ddec.pkl"
     elif charge_type=="Bader":
         model_charge_name = "./pth/best_bader/bader.pth"
-        charge_nor_name = "./pth/best_bader/normalizer-bader.pkl"
+        charge_nor_name = "./pth/best_bader/bader.pkl"
     elif charge_type=="CM5":
         model_charge_name = "./pth/best_cm5/cm5.pth"
-        charge_nor_name = "./pth/best_cm5/normalizer-cm5.pkl"
+        charge_nor_name = "./pth/best_cm5/cm5.pkl"
     elif charge_type=="REPEAT":
         model_charge_name = "./pth/best_repeat/repeat.pth"
-        charge_nor_name = "./pth/best_repeat/normalizer-repeat.pkl"
+        charge_nor_name = "./pth/best_repeat/repeat.pkl"
     # with open(pbe_nor_name, 'rb') as f:
     #     pbe_nor = pickle.load(f)
     # f.close()
