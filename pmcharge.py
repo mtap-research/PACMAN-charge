@@ -90,7 +90,7 @@ def main():
 
             # pbe1 = structures[0].shape[-1]
             # pbe2 = structures[1].shape[-1]
-            # checkpoint = torch.load(model_pbe_name, map_location=torch.device(device))
+            # checkpoint = torch.load(model_pbe_name, map_location=torch.device(device), weights_only=True)
             # x = checkpoint['model_args']
             # atom_fea_len = x['atom_fea_len']
             # h_fea_len = x['h_fea_len']
@@ -102,7 +102,7 @@ def main():
             # model_pbe.eval()
             # bandgap1 = structures[0].shape[-1]
             # bandgap2 = structures[1].shape[-1]
-            # checkpoint = torch.load(model_bandgap_name, map_location=torch.device(device))
+            # checkpoint = torch.load(model_bandgap_name, map_location=torch.device(device), weights_only=True)
             # x = checkpoint['model_args']
             # atom_fea_len = x['atom_fea_len']
             # h_fea_len = x['h_fea_len']
@@ -114,7 +114,7 @@ def main():
             # model_bandgap.eval()
         
             gcn = GCN(chg_1-3, chg_2, 128, 7, 256,5) 
-            chkpt = torch.load(model_charge_name, map_location=torch.device(device))
+            chkpt = torch.load(model_charge_name, map_location=torch.device(device), weights_only=True)
             model4chg = SemiFullGN(chg_1,chg_2,128,8,256)
             model4chg.to(device)
             model4chg.load_state_dict(chkpt['state_dict'])
