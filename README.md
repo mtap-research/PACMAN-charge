@@ -180,7 +180,8 @@ Parity plot of partial atomic charges CM5 and PACMAN on the test set (QMOF).
 <img src="./figs/CM5.png" alt="CM5" width="500">                                       
 
 *  Bader Charges                            
-Parity plot of partial atomic charges from Bader and PACMAN on the test set (QMOF).                           
+Parity plot of partial atomic charges from Bader and PACMAN on the test set (QMOF).                                       
+For the Bader model, use caution with Th-MOF predictions due to just 2 points used in traning set. The big error shows in the below figure is `Th`.                        
 <img src="./figs/Bader.png" alt="Bader" width="500">                                       
 
 *  REPEAT Charges                              
