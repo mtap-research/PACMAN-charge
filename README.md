@@ -51,7 +51,7 @@ python pmcharge.py folder-name[path] --charge_type[DDEC6/Bader/CM5/REPEAT] --dig
 * folder-name: relative path to a folder with cif files without partial atomic charges                            
 * charge-type (default: DDEC6): DDEC6, Bader, CM5 or REPEAT
 * digits (default: 6): number of decimal places to print for partial atomic charges. ML models were trained on a 6-digit dataset                                                    
-* atom-type (default: True): Default is to keep the same partial atomic charge for the same atom types (based on the similarity of partial atomic charges up to 3 & 2 decimal places)                    
+* atom-type (default: True): Default is to keep the same partial atomic charge for the same atom types (based on the similarity of partial atomic charges up to 3 decimal places)                    
 * neutral (default: True): Default is to keep the net charge is zero. We use "mean" method to neuralize the system where the excess charges are equally distributed across all atoms              
 
 # Website & Zenodo
