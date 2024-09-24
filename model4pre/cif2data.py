@@ -195,7 +195,7 @@ def write4cif(mof,chg,digits,atom_type,neutral,charge_type,keep_connect):
         mof = ReadCif(name + ".cif")
         mof.first_block().AddToLoop("_atom_site_type_symbol",{'_atom_site_charge':[str(q) for q in charges]})
         with open(name + "_pacman.cif", 'w') as f:
-            f.write("# " + charge_type + "charges by PACMAN v1.3 (https://github.com/mtap-research/PACMAN-charge/)\n" +
+            f.write("# " + charge_type + " charges by PACMAN v1.3 (https://github.com/mtap-research/PACMAN-charge/)\n" +
                     f"data_{name.split('/')[-1]}" + str(mof.first_block()))
         print("Compelete and save as "+ name + "_pacman.cif")
     else:
