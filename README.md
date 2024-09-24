@@ -36,13 +36,13 @@ pip install -r requirements.txt
                 
 ```sh      
 from PACMANCharge import pmcharge
-pmcharge.predict(cif_file="./test/Cu-BTC.cif",charge_type="DDEC6",digits=10,atom_type=True,neutral=True)
+pmcharge.predict(cif_file="./test/Cu-BTC.cif",charge_type="DDEC6",digits=10,atom_type=True,neutral=True,keep_connect=True)
 
 ```                                                               
                                   
 **Terminal**
 ```sh
-python pmcharge.py folder-name[path] --charge_type[DDEC6/Bader/CM5/REPEAT] --digits[int] --atom_type[bool] --neutral[bool]
+python pmcharge.py folder-name[path] --charge_type[DDEC6/Bader/CM5/REPEAT] --digits[int] --atom_type[bool] --neutral[bool] --keep_connect[bool]
 ```
 **Example command:** ```python pmcharge.py test_file/test-1/ --charge_type DDEC6 --digits 10```                                                    
 
@@ -53,6 +53,7 @@ python pmcharge.py folder-name[path] --charge_type[DDEC6/Bader/CM5/REPEAT] --dig
 * digits (default: 6): number of decimal places to print for partial atomic charges. ML models were trained on a 6-digit dataset                                                    
 * atom-type (default: True): Default is to keep the same partial atomic charge for the same atom types (based on the similarity of partial atomic charges up to 3 decimal places)                    
 * neutral (default: True): Default is to keep the net charge is zero. We use "mean" method to neuralize the system where the excess charges are equally distributed across all atoms              
+* keep_connect (default: True): retain the atomic and connection information (such as _atom_site_adp_type, bond) for the structure.             
 
 # Website & Zenodo
 * Predict partial atomic charges using an online APP :point_right: [link](https://pacman-charge-mtap.streamlit.app/)
