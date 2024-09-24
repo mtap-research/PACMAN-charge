@@ -17,6 +17,7 @@ def main():
     parser.add_argument('--digits', type=int, default=6, help='Number of decimal places to print for partial atomic charges')
     parser.add_argument('--atom_type', type=bool, default=True, help='Keep the same partial atomic charge for the same atom types')
     parser.add_argument('--neutral', type=bool, default=True, help='Keep the net charge is zero')
+    parser.add_argument('--keep_connect', type=bool, default=True, help='Keep information from original CIF file')
     args = parser.parse_args()
 
     path = args.folder_name
@@ -24,6 +25,7 @@ def main():
     digits = args.digits
     atom_type = args.atom_type
     neutral = args.neutral
+    keep_connect = args.keep_connect
     if os.path.isfile(path):
         print("please input a folder, not a file")
     elif os.path.isdir(path):
@@ -65,6 +67,7 @@ def main():
     print("Digits: " + str(digits))
     print("Atom Type:" + str(atom_type))
     print("Neutral: " + str(neutral))
+    print("Keep Connect: " + str(keep_connect))
 
     cif_files = glob.glob(os.path.join(path, '*.cif'))
     print("writing cif: ***_pacman.cif")
@@ -74,7 +77,10 @@ def main():
     i = 0
     for cif in tqdm(cif_files):
         try:
-            ase_format(cif)
+            if keep_connect:
+                pass
+            else:
+                ase_format(cif)
             cif_data = CIF2json(cif)
             pos = pre4pre(cif)
             # num_atom = n_atom(cif)
@@ -114,7 +120,7 @@ def main():
             # model_bandgap.eval()
         
             gcn = GCN(chg_1-3, chg_2, 128, 7, 256,5) 
-            chkpt = torch.load(model_charge_name, map_location=torch.device(device), weights_only=True)
+            chkpt = torch.load(model_charge_name, map_location=torch.device(device)) #, weights_only=True
             model4chg = SemiFullGN(chg_1,chg_2,128,8,256)
             model4chg.to(device)
             model4chg.load_state_dict(chkpt['state_dict'])
@@ -146,7 +152,7 @@ def main():
 
                     chg = model4chg(*input_var2)
                     chg = charge_nor.denorm(chg.data.cpu())
-                    write4cif(cif,chg,digits,atom_type,neutral,charge_type)          
+                    write4cif(cif,chg,digits,atom_type,neutral,charge_type,keep_connect)          
         except:
             print("Fail predict: " + cif)
             fail[str(i)]=[cif]

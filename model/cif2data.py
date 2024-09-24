@@ -1,10 +1,12 @@
 import os
 import re
+import glob
 import json
 import warnings
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
+from CifFile import ReadCif
 import pymatgen.core as mg
 from ase.io import read
 from ase import neighborlist
@@ -207,6 +209,14 @@ def get_ddec_data(root_cif_dir,dataset_csv,save_ddec_dir):
             np.save(save_ddec_dir + mof + '.npy', ddec_data)          
         f.close()
 
+def get_ddec_data_from_qmof(root_cif_dir,dataset_csv,save_ddec_dir):
+    mofs = pd.read_csv(dataset_csv)["name"]
+    for mof in mofs:
+        data_cif = ReadCif(root_cif_dir + mof + ".cif")
+        charge = data_cif[data_cif.keys()[0]]["_atom_site_pbe_ddec_charge"]
+        np.save(save_ddec_dir + mof + '.npy', charge)          
+
+
 def get_bader_data(root_cif_dir,dataset_csv,save_bader_dir):
     mofs = pd.read_csv(dataset_csv)["name"]
     for mof in mofs:
@@ -234,7 +244,14 @@ def get_bader_data(root_cif_dir,dataset_csv,save_bader_dir):
             f.close()
         except:
             pass
-        
+
+def get_bader_data_from_qmof(root_cif_dir,dataset_csv,save_bader_dir):
+    mofs = pd.read_csv(dataset_csv)["name"]
+    for mof in mofs:
+        data_cif = ReadCif(root_cif_dir + mof + ".cif")
+        charge = data_cif[data_cif.keys()[0]]["_atom_site_pbe_bader_charge"]
+        np.save(save_bader_dir + mof + '.npy', charge)  
+
 def get_cm5_data(root_cif_dir,dataset_csv,save_cm5_dir):
     mofs = pd.read_csv(dataset_csv)["name"]
     for mof in mofs:
@@ -263,6 +280,13 @@ def get_cm5_data(root_cif_dir,dataset_csv,save_cm5_dir):
         except:
             pass
 
+def get_cm5_data_from_qmof(root_cif_dir,dataset_csv,save_cm5_dir):
+    mofs = pd.read_csv(dataset_csv)["name"]
+    for mof in mofs:
+        data_cif = ReadCif(root_cif_dir + mof + ".cif")
+        charge = data_cif[data_cif.keys()[0]]["_atom_site_pbe_cm5_charge"]
+        np.save(save_cm5_dir + mof + '.npy', charge)  
+
 def get_repeat_data(root_cif_dir,save_repeat_dir):
     mofs = glob.glob(os.path.join(root_cif_dir, '*.cif'))
     for mof in tqdm(mofs[:]):
@@ -279,6 +303,13 @@ def get_repeat_data(root_cif_dir,save_repeat_dir):
                         repeat_data.append(repeat.replace("\n",""))
                 np.save(save_repeat_dir + mof + '.npy', repeat_data)          
             f.close()
-			
         except:
            pass
+
+def get_repeat_data_from_arcmof(root_cif_dir,save_repeat_dir):
+    mofs = glob.glob(os.path.join(root_cif_dir, '*.cif'))
+    for mof in mofs:
+        mof = mof.replace(".cif","").split("/")[-1]
+        data_cif = ReadCif(root_cif_dir + mof + ".cif")
+        charge = data_cif[data_cif.keys()[0]]["_atom_site_pbe_cm5_charge"]
+        np.save(save_repeat_dir + mof + '.npy', charge)  

@@ -1,6 +1,7 @@
 import warnings
 import numpy as np
 import pymatgen.core as mg
+from CifFile import ReadCif
 from ase.io import read,write
 from pymatgen.io.ase import AseAtomsAdaptor
 from pymatgen.io.cif import CifParser
@@ -146,7 +147,7 @@ def average_and_replace(numbers, di):
             numbers[i] = avg
     return numbers
 
-def write4cif(mof,chg,digits,atom_type,neutral,charge_type):
+def write4cif(mof,chg,digits,atom_type,neutral,charge_type,keep_connect):
     name = mof.split('.cif')[0]
     chg = chg.numpy()
     dia = int(digits)
@@ -190,36 +191,43 @@ def write4cif(mof,chg,digits,atom_type,neutral,charge_type):
 
     if neutral==False:
         print("net charge: "+str(sum(charges)))
+    if keep_connect:
+        mof = ReadCif(name + ".cif")
+        mof.first_block().AddToLoop("_atom_site_type_symbol",{'_atom_site_charge':[str(q) for q in charges]})
+        with open(name + "_pacman.cif", 'w') as f:
+            f.write("# " + charge_type + "charges by PACMAN v1.3 (https://github.com/mtap-research/PACMAN-charge/)\n" +
+                    f"data_{name.split('/')[-1]}" + str(mof.first_block()))
+        print("Compelete and save as "+ name + "_pacman.cif")
+    else:
+        with open(name + ".cif", 'r') as file:
+            lines = file.readlines()
+        lines[0] = "# "+charge_type+" charges by PACMAN v1.3 (https://github.com/mtap-research/PACMAN-charge/)\n"
+        lines[1] = "data_" + name.split("/")[-1] + "_pacman\n"
+        for i, line in enumerate(lines):
+            if '_atom_site_occupancy' in line:
+                lines.insert(i + 1, "  _atom_site_charge\n")
+                break
+        charge_index = 0
+        for j in range(i + 2, len(lines)):
+            if charge_index < len(charges):
+                lines[j] = lines[j].strip() + " " + str(charges[charge_index]) + "\n"
+                charge_index += 1
+            else:
+                break
 
-    with open(name + ".cif", 'r') as file:
-        lines = file.readlines()
-    lines[0] = "# "+charge_type+" charges by PACMAN v1.1 (https://github.com/mtap-research/PACMAN-charge/)\n"
-    lines[1] = "data_" + name.split("/")[-1] + "_pacman\n"
-    for i, line in enumerate(lines):
-        if '_atom_site_occupancy' in line:
-            lines.insert(i + 1, "  _atom_site_charge\n")
-            break
-    charge_index = 0
-    for j in range(i + 2, len(lines)):
-        if charge_index < len(charges):
-            lines[j] = lines[j].strip() + " " + str(charges[charge_index]) + "\n"
-            charge_index += 1
-        else:
-            break
+        with open(name + "_pacman.cif", 'w') as file:
+            file.writelines(lines)
+        file.close()
 
-    with open(name + "_pacman.cif", 'w') as file:
-        file.writelines(lines)
-    file.close()
+        with open(name + "_pacman.cif", 'r') as file:
+            content = file.read()
+        file.close()
 
-    with open(name + "_pacman.cif", 'r') as file:
-        content = file.read()
-    file.close()
+        new_content = content.replace('_space_group_name_H-M_alt', '_symmetry_space_group_name_H-M')
+        new_content = new_content.replace('_space_group_IT_number', '_symmetry_Int_Tables_number')
+        new_content = new_content.replace('_space_group_symop_operation_xyz', '_symmetry_equiv_pos_as_xyz')
 
-    new_content = content.replace('_space_group_name_H-M_alt', '_symmetry_space_group_name_H-M')
-    new_content = new_content.replace('_space_group_IT_number', '_symmetry_Int_Tables_number')
-    new_content = new_content.replace('_space_group_symop_operation_xyz', '_symmetry_equiv_pos_as_xyz')
-
-    with open(name + "_pacman.cif", 'wb') as file:
-        file.write(new_content.encode('utf-8'))
-    file.close()
-    print("Compelete and save as "+ name + "_pacman.cif")
+        with open(name + "_pacman.cif", 'wb') as file:
+            file.write(new_content.encode('utf-8'))
+        file.close()
+        print("Compelete and save as "+ name + "_pacman.cif")
